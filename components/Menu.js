@@ -35,12 +35,10 @@ let menuItems = [
 function menuMaker(array) {
   const menu = document.createElement("div");
   menu.className = "menu";
-  
   const list = document.createElement("ul");
   list.innerHTML = array.reduce((acc, li) => acc + `<li>${li}</li>`, "");
   list.append();
   menu.appendChild(list);
-  
   const menuButton = document.querySelector(".menu-button");
   menuButton.addEventListener("click", () =>
     menu.classList.toggle("menu--open")
