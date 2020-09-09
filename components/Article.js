@@ -112,57 +112,58 @@ const data = [
   Step 5: Add a new article to the array. Make sure it is in the same format as the others. Refresh the page to see the new article.
 */
 
-// class articleMaker extends HTMLElement{
-//   constructor(){
-//     super();
-//     this.innerHTML = data.map(articles =>{
-//       return (
-//         `
-//         <div class="article">
-//         <h2>${articles.title}</h2>
-//         <p class="date">${articles.date}</p>
-//         <p>${articles.firstParagraph}</p>
-//         <p>${articles.secondParagraph}</p>
-//         <p>${articles.thirdParagraph}</p>
-//         <span class='expandButton'>+</span>
-//       </div>
-//         `
-//       )
-//     })
-//   };
-//   connectedCallback() {
-//    document.querySelectorAll(".expandButton").forEach(item=>{
-//      item.addEventListener('click', ()=> document.querySelector('.article').className = 'article-open')
-//    })
 
-//   }
-// };
-// window.customElements.define('article-maker', articleMaker);
+// function articleMaker(obj) {
+//   const article = document.createElement("div");
+//   article.className = "article";
+//   const title = document.createElement("h2");
+//   title.innerText = obj.title;
+//   const date = document.createElement("p");
+//   date.className = "date";
+//   date.innerText = obj.date;
+//   const paragraph1 = document.createElement("p");
+//   paragraph1.innerText = obj.firstParagraph;
+//   const paragraph2 = document.createElement("p");
+//   paragraph2.innerText = obj.secondParagraph;
+//   const paragraph3 = document.createElement("p");
+//   paragraph3.innerText = obj.thirdParagraph;
+//   const expandButton = document.createElement("span");
+//   expandButton.className = "expandButton";
+//   expandButton.innerText = "+";
+//   expandButton.addEventListener("click", () =>
+//     article.classList.toggle("article-open")
+//   );
+//   article.append(title, date, paragraph1, paragraph2, paragraph3, expandButton);
+//   return article;
+// }
+// const articles = document.querySelector(".articles");
+// data.forEach((obj) => articles.appendChild(articleMaker(obj)));
 
 function articleMaker(obj) {
   const article = document.createElement("div");
-  article.className = "article";
   const title = document.createElement("h2");
-  title.innerText = obj.title;
   const date = document.createElement("p");
-  date.className = "date";
-  date.innerText = obj.date;
   const paragraph1 = document.createElement("p");
-  paragraph1.innerText = obj.firstParagraph;
   const paragraph2 = document.createElement("p");
-  paragraph2.innerText = obj.secondParagraph;
   const paragraph3 = document.createElement("p");
-  paragraph3.innerText = obj.thirdParagraph;
   const expandButton = document.createElement("span");
+
+  article.className = "article";
+  date.className = "date";
   expandButton.className = "expandButton";
+
+  title.innerText = obj.title;
+  date.innerText = obj.date;
+  paragraph1.innerText = obj.firstParagraph;
+  paragraph2.innerText = obj.secondParagraph;
+  paragraph3.innerText = obj.thirdParagraph;
   expandButton.innerText = "+";
+
   expandButton.addEventListener("click", () =>
-    article.classList.toggle("article-open")
-  );
-  article.append(title, date, paragraph1, paragraph2, paragraph3, expandButton);
-  return article;
+  article.classList.toggle("article-open")
+);
+article.append(title, date, paragraph1, paragraph2, paragraph3, expandButton);
+return article;
 }
 const articles = document.querySelector(".articles");
 data.forEach((obj) => articles.appendChild(articleMaker(obj)));
-
-
